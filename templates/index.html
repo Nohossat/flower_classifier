@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Image classifier</title>
+</head>
+<body>
+    <div style="width: 800px; margin: 0 auto; padding: 3em;">
+        <h1 style="margin-bottom: 1em;">Image classifier</h1>
+        <h3 style="margin-bottom: 1em;"> Try our new flower identifier app : tulip or daisy ?</h2>
+        <form action="{{ url_for('predict')}}" method="POST" enctype=multipart/form-data>
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input type="file" name="img" class="img">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        {% if filename %}
+        <div style="margin-top:2em;">
+            <h3 style="margin: 2em 0em 1em 0em;">Answer</h3>
+            <div style="display: flex; height: 200px;">
+                <img src="{{ filename }}" width="300px" alt="flower">  
+                <div style="padding: 2em; display: flex; align-items: center; width: 50%;">
+                    <h3 style="text-align: center; width: 100%; color:#CE1483"> {{ response }} </h3>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

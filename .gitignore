@@ -1,0 +1,4 @@
+venv
+static/uploads
+.vscode
+__pycache__
